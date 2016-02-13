@@ -1,0 +1,31 @@
+Example fit of line to data
+----------------------------
+
+Sample data:
+r_i    theta_i
+.5197  0
+.4404  5
+.4850  10
+.4222  15
+.4132  20
+.4371  25
+.3912  30
+.3949  35
+.3919  40
+.4276  45
+.4075  50
+.3956  55
+.4053  60
+.4752  65
+.5032  70
+.5273  75
+.4879  80
+
+The best fit should be:
+.4     37.36
+
+
+Reference: Siegwart et al, Intro to Autonomous Mobile Robots, 2e, p247
+
+
+# EOF

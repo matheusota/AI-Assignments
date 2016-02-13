@@ -1,0 +1,47 @@
+# blocks hard
+
+predicates: On(x, y) Clear(x)
+constants: A B Table
+3 actions
+
+Move block src dest
+pre: On(block, src) Clear(block) Clear(dest)
+preneg:
+del: On(block, src) Clear(dest)
+add: On(block, dest) Clear(src)
+
+ToTable block src
+pre: On(block, src) Clear(block)
+preneg: On(block, Table)
+del: On(block, src)
+add: On(block, Table) Clear(src)
+
+FromTable block dest
+pre: On(block, Table) Clear(block) Clear(dest)
+preneg:
+del: On(block, Table) Clear(dest)
+add: On(block, dest)
+
+constants: C
+initial: On(A, Table) On(C, A) Clear(C) On(B, Table) Clear(B)
+goal: On(C, Table) On(B, C) On(A, B)
+goalneg: Clear(Table)
+
+(define (domain blocksworld)
+  (:requirements :strips)
+  (:action move
+     :parameters (?b ?x ?y)
+     :precondition (and (block ?b) (table ?x) (table ?y) (on ?b ?x) (clear ?b) (clear ?y))
+     :effect (not (on ?b ?x) (on ?b ?y) (clear ?x) not (clear ?y))
+     )
+  (:action stack
+     :parameters (?a ?x ?b ?y)
+     :precondition (and (block ?a) (block ?b) (table ?x) (table ?y) (clear ?a) (clear ?b) (on ?a ?x) (on ?b ?y))
+     :effect (and (on ?a ?b) not (on ?a ?x) not (clear ?b) (clear ?x))
+     )
+  (:action unstack
+     :parameters (?a ?b ?x ?y)
+     :precondition (and (block ?a) (block ?b) (table ?x) (table ?y) (on ?b ?x) (on ?a ?b) (clear ?a) (clear ?y))
+     :effect (and (on ?a ?y) not (on ?a ?b) (clear ?b) (clear ?a) not (clear ?y))
+     )
+)

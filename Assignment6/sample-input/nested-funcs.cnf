@@ -1,0 +1,2 @@
+-Man(x) | Mortal(x)
+Man(F1(F2(Socrates))) | -Mortal(F1(F2(Socrates)))

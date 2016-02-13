@@ -1,0 +1,19 @@
+Program exited with status 0
+Solver used 0.000 Seconds
+Solver used approximately 17 MB of memory
+Plan Cost:       24
+Plan Length:     24
+Nodes Generated: 765
+Nodes Expanded:  700
+
+_#__544*2_
+___65#__*_
+___*#_#_1#
+___7____0_
+___8______
+__#8_____#
+___9______
+#__999_##_
+__#_#9____
+___#_*_##_
+

@@ -1,0 +1,29 @@
+# blocks world
+
+predicates: On(x, y) Clear(x)
+constants: A B Table
+3 actions
+
+Move block src dest
+# note that dest <> table
+pre: On(block, src) Clear(block) Clear(dest)
+preneg:
+del: On(block, src) Clear(dest)
+add: On(block, dest) Clear(src)
+
+ToTable block src
+pre: On(block, src) Clear(block)
+preneg: On(block, Table)
+del: On(block, src)
+add: On(block, Table) Clear(src)
+
+FromTable block dest
+pre: On(block, Table) Clear(block) Clear(dest)
+preneg:
+del: On(block, Table) Clear(dest)
+add: On(block, dest)
+
+constants: C
+initial: On(A, Table) On(C, A) Clear(C) On(B, Table) Clear(B)
+goal: On(C, Table) On(B, C) On(A, B)
+goalneg: Clear(Table)

@@ -1,0 +1,2 @@
+-Man(x) | Mortal(x)
+Man(Socrates) | -Mortal(x) | Ans(x)
